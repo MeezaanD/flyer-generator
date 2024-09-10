@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<title>Flyer Template</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="flyer-container" id="flyer">
+			<header>
+				<img src="/images/QTZ-logo.png" loading="lazy" alt="Logo">
+				<div class="company-info">
+					<div class="slogan">Quality Concrete Products, Always on Time</div>
+					<div class="website"><a href="https://qtzconcrete.co.za/" target="_blank">www.qtzconcrete.co.za</a>
+					</div>
+				</div>
+			</header>
+
+			<div class="offerings-section">
+			</div>
+
+			<div class="products-section">
+				<div class="product">
+					<div class="product-content">
+						<div class="product-details">
+							<div class="product-title" id="product1-title">Product 1</div>
+							<div class="product-description" id="product1-description">Sample Text</div>
+						</div>
+						<div class="product-price" id="product1-price">R99.99</div>
+					</div>
+					<img src="product1.png" alt="Product 1" id="product1-img">
+				</div>
+
+				<div class="product">
+					<div class="product-content">
+						<div class="product-details">
+							<div class="product-title" id="product2-title">Product 2</div>
+							<div class="product-description" id="product2-description">Sample Text</div>
+						</div>
+						<div class="product-price" id="product2-price">R79.99</div>
+					</div>
+					<img src="product2.png" alt="Product 2" id="product2-img">
+				</div>
+				<div class="product">
+					<div class="product-content">
+						<div class="product-details">
+							<div class="product-title" id="product3-title">Product 3</div>
+							<div class="product-description" id="product3-description">Sample Text</div>
+						</div>
+						<div class="product-price" id="product3-price">R59.99</div>
+					</div>
+					<img src="product3.png" alt="Product 3" id="product3-img">
+				</div>
+				<div class="product">
+					<div class="product-content">
+						<div class="product-details">
+							<div class="product-title" id="product4-title">Product 4</div>
+							<div class="product-description" id="product4-description">Sample Text</div>
+						</div>
+						<div class="product-price" id="product4-price">R49.99</div>
+					</div>
+					<img src="product4.png" alt="Product 4" id="product4-img">
+				</div>
+			</div>
+
+			<footer>
+				<!-- <div class="social-icons">
+					<a href="#" style="color: #3b5998;"><i class="bi bi-telephone-fill"></i> 021 703 1414</a>
+					<a href="https://api.whatsapp.com/send?phone=270679481453" target="_blank"
+						style="color: #25D366;"><i class="bi bi-whatsapp"></i> 067 948 1453</a>
+					<a href="https://web.facebook.com/p/Qtz-concrete-100045277244990/?_rdc=1&_rdr" target="_blank"
+						style="color: #3b5998;"><i class="bi bi-facebook"></i> Qtz Concrete</a>
+					<a href="https://www.instagram.com/qtzconcrete/" target="_blank" style="color: #3b5998;"><i
+							class="bi bi-instagram"></i> Qtzconcrete</a>
+				</div>
+				<div class="contact-info">
+					<ul>
+						<li>Contact Us: sales@qtzconcrete.co.za</li>
+						<li>Operating Hours: Mon-Fri 8:00am - 5pm Sat 8am - 2pm</li>
+						<li>Address: Corner of New Strandfontein & Bloemhof road Ottery</li>
+					</ul>
+				</div>
+				<img src="/images/QTZ-logo.png" alt="Logo"> -->
+			</footer>
+		</div>
+
+
+		<div class="input-section">
+			<h2>Edit Flyer</h2>
+
+			<!-- Product 1 Inputs -->
+			<h3>Product 1</h3>
+			<input type="text" id="product1-title-input" placeholder="Product 1">
+			<input type="text" id="product1-description-input" placeholder="Product 1 Description">
+			<input type="text" id="product1-price-input" placeholder="Product 1 Price" value="R">
+			<input type="file" id="product1-img-input" accept="image/*">
+
+			<!-- Product 2 Inputs -->
+			<h3>Product 2</h3>
+			<input type="text" id="product2-title-input" placeholder="Product 2">
+			<input type="text" id="product2-description-input" placeholder="Product 2 Description">
+			<input type="text" id="product2-price-input" placeholder="Product 2 Price" value="R">
+			<input type="file" id="product2-img-input" accept="image/*">
+
+			<!-- Product 3 Inputs -->
+			<h3>Product 3</h3>
+			<input type="text" id="product3-title-input" placeholder="Product 3">
+			<input type="text" id="product3-description-input" placeholder="Product 3 Description">
+			<input type="text" id="product3-price-input" placeholder="Product 3 Price" value="R">
+			<input type="file" id="product3-img-input" accept="image/*">
+
+			<!-- Product 4 Inputs -->
+			<h3>Product 4</h3>
+			<input type="text" id="product4-title-input" placeholder="Product 4">
+			<input type="text" id="product4-description-input" placeholder="Product 4 Description">
+			<input type="text" id="product4-price-input" placeholder="Product 4 Price" value="R">
+			<input type="file" id="product4-img-input" accept="image/*">
+
+			<button onclick="saveFlyerAsImage()">Save as Image</button>
+			<button onclick="saveFlyerAsPDF()">Save as PDF</button>
+			<button onclick="clearDetails()">Clear Details</button>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="script.js"></script>
+
+
+</body>
+
+</html>
