@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: "Cormorant Garamond", serif;
+	font-family: "Inter", sans-serif;
 }
 
 :root {
-	--orange: #F16224;
-	--green: #055D34;
+	--orange: #F18226;
+	--green: #06A453;
 	--dark: #040404;
 	--white: white;
+	--blue: #2196F3;
 }
 
 body {
@@ -41,7 +42,7 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	/* Removed padding here to prevent it from affecting the footer */
+	padding: 10px;
 }
 
 .offerings-section {
@@ -51,6 +52,7 @@ h2 {
 	background-size: cover;
 	width: 100%;
 	min-height: 12rem;
+	margin-top: 10px;
 }
 
 header,
@@ -69,7 +71,7 @@ header {
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
-	min-height: 12.5rem;
+	min-height: 15rem;
 }
 
 footer {
@@ -79,87 +81,94 @@ footer {
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
-	min-height: 26rem;
+	min-height: 14rem;
+	margin-top: 10px;
 }
 
 .products-section {
-	margin-top: 20px;
+	margin-top: 10px;
 	width: 100%;
 	max-height: 100%;
 	padding: 10px;
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
+	justify-content: space-around;
 	gap: 10px;
+	background-color: var(--blue);
 }
 
 .product {
-	max-width: calc(50% - 10px);
+	max-width: calc(33.333% - 20px);
+	/* Adjusted for 3 products in a row with gaps */
 	width: 100%;
-	max-height: 250px;
+	height: 200px;
 	display: flex;
-	box-sizing: border-box;
-	background: linear-gradient(135deg, var(--orange), var(--green));
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-	border-radius: 15px;
+	border-radius: 5px;
 	overflow: hidden;
 	position: relative;
 }
 
 .product img {
 	width: 100%;
-	max-width: 200px;
-	max-height: 200px;
-	border-top-right-radius: 10px;
-		border-bottom-right-radius: 10px;
-	/* object-fit: cover; */
+	object-fit: cover;
+	/* opacity: 0.8; */
+	/* Ensure the image acts as a background */
 }
 
 .product-content {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	flex: 4;
+	justify-content: flex-end;
+	/* Align the price at the bottom */
+	flex: 1;
 	padding: 18px;
-	background-color: rgba(255, 255, 255, 0.85);
+	background-color: rgba(255, 255, 255, 0);
+	/* Transparent background to see the image */
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	backdrop-filter: blur(5px);
-	position: relative;
+	/* backdrop-filter: blur(5px); */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+	/* Ensure content is above the background image */
 }
 
-.product-details {
-	flex-grow: 1;
-}
-
-.product-title {
-	font-size: 22px;
-	font-weight: bold;
-	color: #333;
-	margin-bottom: 8px;
-}
-
+.product-title,
 .product-description {
-	font-size: 18px;
-	font-weight: 600;
-	max-width: 90px;
-	max-height: 50px;
-	word-wrap: break-word;
-	color: #333;
-	margin-bottom: 15px;
+	display: none;
 }
 
 .product-price {
 	font-size: 20px;
 	font-weight: bold;
-	color: #fff;
+	color: var(--white);
 	background-color: var(--green);
-	/* Vibrant color for the price tag */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 	border-radius: 50px;
 	padding: 10px 15px;
-	align-self: flex-start;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
 	white-space: nowrap;
+	z-index: 2;
+}
+
+/* Button styling */
+.product-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: var(--green);
+	color: var(--white);
+	border: none;
+	border-radius: 5px;
+	padding: 20px;
+	font-size: 14px;
+	cursor: pointer;
+	z-index: 2;
 }
 
 .input-section {

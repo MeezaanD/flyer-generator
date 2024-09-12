@@ -15,11 +15,21 @@
 		<div class="flyer-container" id="flyer">
 			<div class="main-content">
 				<header>
+					<!-- <div class="logo-phone">
+						<img src="/images/QTZ-logo.png" loading="lazy" alt="Logo">
+						<p class="phone-number">0217031414</p>
+					</div>
+					<div class="company-info">
+						<div class="slogan">Quality Concrete Products, Always on Time</div>
+						<div class="website"><a href="https://qtzconcrete.co.za/" target="_blank">www.qtzconcrete.co.za</a>
+						</div>
+					</div> -->
 				</header>
 				<div class="offerings-section">
 				</div>
-	
+
 				<div class="products-section">
+					<!-- Product 1 -->
 					<div class="product">
 						<div class="product-content">
 							<div class="product-details">
@@ -30,7 +40,8 @@
 						</div>
 						<img src="product1.png" alt="Product 1" id="product1-img">
 					</div>
-	
+
+					<!-- Product 2 -->
 					<div class="product">
 						<div class="product-content">
 							<div class="product-details">
@@ -41,6 +52,8 @@
 						</div>
 						<img src="product2.png" alt="Product 2" id="product2-img">
 					</div>
+
+					<!-- Product 3 -->
 					<div class="product">
 						<div class="product-content">
 							<div class="product-details">
@@ -51,6 +64,8 @@
 						</div>
 						<img src="product3.png" alt="Product 3" id="product3-img">
 					</div>
+
+					<!-- Product 4 -->
 					<div class="product">
 						<div class="product-content">
 							<div class="product-details">
@@ -61,44 +76,82 @@
 						</div>
 						<img src="product4.png" alt="Product 4" id="product4-img">
 					</div>
+
+					<!-- Product 5 -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-details">
+								<div class="product-title" id="product5-title">Product 5</div>
+								<div class="product-description" id="product5-description">Sample Text</div>
+							</div>
+							<div class="product-price" id="product5-price">R89.99</div>
+						</div>
+						<img src="product5.png" alt="Product 5" id="product5-img">
+					</div>
+
+					<!-- Product 6 -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-details">
+								<div class="product-title" id="product6-title">Product 6</div>
+								<div class="product-description" id="product6-description">Sample Text</div>
+							</div>
+							<div class="product-price" id="product6-price">R69.99</div>
+						</div>
+						<img src="product6.png" alt="Product 6" id="product6-img">
+					</div>
 				</div>
+
 			</div>
 
 			<footer>
 			</footer>
 		</div>
 
-
 		<div class="input-section">
 			<h2>Edit Flyer</h2>
 
 			<!-- Product 1 Inputs -->
 			<h3>Product 1</h3>
-			<input type="text" id="product1-title-input" placeholder="Product 1">
-			<input type="text" id="product1-description-input" placeholder="Product 1 Description">
+			<!-- <input type="text" id="product1-title-input" placeholder="Product 1"> -->
+			<!-- <input type="text" id="product1-description-input" placeholder="Product 1 Description"> -->
 			<input type="text" id="product1-price-input" placeholder="Product 1 Price" value="R">
 			<input type="file" id="product1-img-input" accept="image/*">
 
 			<!-- Product 2 Inputs -->
 			<h3>Product 2</h3>
-			<input type="text" id="product2-title-input" placeholder="Product 2">
-			<input type="text" id="product2-description-input" placeholder="Product 2 Description">
+			<!-- <input type="text" id="product2-title-input" placeholder="Product 2"> -->
+			<!-- <input type="text" id="product2-description-input" placeholder="Product 2 Description"> -->
 			<input type="text" id="product2-price-input" placeholder="Product 2 Price" value="R">
 			<input type="file" id="product2-img-input" accept="image/*">
 
 			<!-- Product 3 Inputs -->
 			<h3>Product 3</h3>
-			<input type="text" id="product3-title-input" placeholder="Product 3">
-			<input type="text" id="product3-description-input" placeholder="Product 3 Description">
+			<!-- <input type="text" id="product3-title-input" placeholder="Product 3"> -->
+			<!-- <input type="text" id="product3-description-input" placeholder="Product 3 Description"> -->
 			<input type="text" id="product3-price-input" placeholder="Product 3 Price" value="R">
 			<input type="file" id="product3-img-input" accept="image/*">
 
 			<!-- Product 4 Inputs -->
 			<h3>Product 4</h3>
-			<input type="text" id="product4-title-input" placeholder="Product 4">
-			<input type="text" id="product4-description-input" placeholder="Product 4 Description">
+			<!-- <input type="text" id="product4-title-input" placeholder="Product 4"> -->
+			<!-- <input type="text" id="product4-description-input" placeholder="Product 4 Description"> -->
 			<input type="text" id="product4-price-input" placeholder="Product 4 Price" value="R">
 			<input type="file" id="product4-img-input" accept="image/*">
+
+			<!-- Product 5 Inputs -->
+			<h3>Product 5</h3>
+			<!-- <input type="text" id="product5-title-input" placeholder="Product 5"> -->
+			<!-- <input type="text" id="product5-description-input" placeholder="Product 5 Description"> -->
+			<input type="text" id="product5-price-input" placeholder="Product 5 Price" value="R">
+			<input type="file" id="product5-img-input" accept="image/*">
+
+			<!-- Product 6 Inputs -->
+			<h3>Product 6</h3>
+			<!-- <input type="text" id="product6-title-input" placeholder="Product 6"> -->
+			<!-- <input type="text" id="product6-description-input" placeholder="Product 6 Description"> -->
+			<input type="text" id="product6-price-input" placeholder="Product 6 Price" value="R">
+			<input type="file" id="product6-img-input" accept="image/*">
 
 			<button onclick="saveFlyerAsImage()">Save as Image</button>
 			<button onclick="saveFlyerAsPDF()">Save as PDF</button>
@@ -109,7 +162,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 	<script src="script.js"></script>
-
 
 </body>
 
