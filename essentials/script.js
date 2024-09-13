@@ -49,39 +49,36 @@ function saveFlyerAsPDF() {
 	}).then(canvas => {
 		const imgData = canvas.toDataURL('image/png');
 		const { jsPDF } = window.jspdf;
+
+		// Get the dimensions of the rendered flyer (canvas)
+		const canvasWidth = canvas.width;
+		const canvasHeight = canvas.height;
+
+		// Fixed PDF width (210 mm for A4 width), height adjusted dynamically
+		const pdfWidth = 210; // A4 width in mm
+		const aspectRatio = canvasWidth / canvasHeight;
+		const pdfHeight = pdfWidth / aspectRatio; // Adjust the height based on the flyer aspect ratio
+
 		const pdf = new jsPDF({
 			orientation: 'portrait',
 			unit: 'mm',
-			format: 'a4'
+			format: [pdfWidth, pdfHeight] // Set custom page size based on the flyer dimensions
 		});
 
-		const pdfWidth = 210;
-		const pdfHeight = 297;
-		const canvasWidth = canvas.width;
-		const canvasHeight = canvas.height;
-		const aspectRatio = canvasWidth / canvasHeight;
-
-		let pdfImageWidth = pdfWidth;
-		let pdfImageHeight = pdfWidth / aspectRatio;
-
-		if (pdfImageHeight > pdfHeight) {
-			pdfImageHeight = pdfHeight;
-			pdfImageWidth = pdfHeight * aspectRatio;
-		}
-
-		const xOffset = (pdfWidth - pdfImageWidth) / 2;
-		const yOffset = (pdfHeight - pdfImageHeight) / 2;
-
-		// Add image of flyer to the PDF
-		pdf.addImage(imgData, 'PNG', xOffset, yOffset, pdfImageWidth, pdfImageHeight);
-
-		// Add clickable link text (URL or email)
+		// Add horizontal links at the top
 		pdf.setFontSize(14);
-		pdf.setTextColor(0, 0, 255);  // Blue text color to indicate a link
-		pdf.textWithLink('Click here to visit website', 10, 280, { url: 'https://example.com' });
+		pdf.setTextColor(0, 0, 255);  // Blue text color for links
 
-		// You can add another link, for example, an email
-		pdf.textWithLink('Contact us at support@example.com', 10, 290, { url: 'mailto:support@example.com' });
+		// Adding links next to each other
+		pdf.textWithLink('Website', 10, 10, { url: 'https://www.essentialscpt.co.za/' });
+		pdf.textWithLink('WhatsApp', 60, 10, { url: 'https://wa.me/1234567890' }); // WhatsApp link
+		pdf.textWithLink('Facebook', 110, 10, { url: 'https://web.facebook.com/strandfonteinrd' }); // Facebook link
+
+		// Leave a bit of space after the links
+		const yOffset = 20;
+
+		// Add the flyer image to the PDF
+		pdf.addImage(imgData, 'PNG', 0, yOffset, pdfWidth, pdfHeight - yOffset);
 
 		// Save the PDF
 		pdf.save('flyer_with_links.pdf');
@@ -89,6 +86,7 @@ function saveFlyerAsPDF() {
 		console.error('Error generating PDF:', error);
 	});
 }
+
 
 // Handle image uploads
 // Handle image uploads
