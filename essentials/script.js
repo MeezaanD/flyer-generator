@@ -1,4 +1,16 @@
-// Combined flyer save functions
+function toggleForm() {
+		const formSection = document.getElementById('input-section');
+		const toggleBtn = document.getElementById('toggle-form-btn');
+
+		if (formSection.style.display === 'none') {
+			formSection.style.display = 'block';
+			toggleBtn.textContent = 'Hide Form';
+		} else {
+			formSection.style.display = 'none';
+			toggleBtn.textContent = 'Show Form';
+		}
+	}
+
 function saveFlyer(type) {
 	const flyer = document.getElementById('flyer');
 	const scaleValue = type === 'pdf' ? 2 : 3;
