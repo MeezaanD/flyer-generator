@@ -82,9 +82,9 @@ function saveFlyerAsPDF() {
 		pdf.setTextColor(0, 0, 255);  // Blue text color for links
 
 		// Adding links next to each other
-		pdf.textWithLink('Website', 10, 10, { url: 'https://www.essentialscpt.co.za/' });
-		pdf.textWithLink('WhatsApp', 60, 10, { url: 'https://wa.me/1234567890' }); // WhatsApp link
-		pdf.textWithLink('Facebook', 110, 10, { url: 'https://web.facebook.com/strandfonteinrd' }); // Facebook link
+		// pdf.textWithLink('Website', 10, 10, { url: 'https://www.essentialscpt.co.za/' });
+		// pdf.textWithLink('WhatsApp', 60, 10, { url: 'https://wa.me/1234567890' }); // WhatsApp link
+		// pdf.textWithLink('Facebook', 110, 10, { url: 'https://web.facebook.com/strandfonteinrd' }); // Facebook link
 
 		// Leave a bit of space after the links
 		const yOffset = 20;
