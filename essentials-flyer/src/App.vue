@@ -1,0 +1,171 @@
+<script setup>
+import { ref, computed } from 'vue';
+import ProductStyleOne from './components/ProductStyleOne.vue';
+import ProductStyleTwo from './components/ProductStyleTwo.vue';
+import ProductStyleThree from './components/ProductStyleThree.vue';
+
+// Reactive properties for product details
+const productDetails = ref([
+	{ title: 'Product 1', description: 'Sample Text', price: 'R', image: null },
+	{ title: 'Product 2', description: 'Sample Text', price: 'R', image: null },
+	{ title: 'Product 3', description: 'Sample Text', price: 'R', image: null },
+	{ title: 'Product 4', description: 'Sample Text', price: 'R', image: null },
+	{ title: 'Product 5', description: 'Sample Text', price: 'R', image: null },
+	{ title: 'Product 6', description: 'Sample Text', price: 'R', image: null },
+]);
+
+const selectedStyle = ref('1');
+
+const currentStyle = computed(() => {
+	switch (selectedStyle.value) {
+		case '1':
+			return ProductStyleOne;
+		case '2':
+			return ProductStyleTwo;
+		case '3':
+			return ProductStyleThree;
+		default:
+			return ProductStyleOne;
+	}
+});
+
+// Function to handle image uploads (not changed)
+const handleImageUpload = (index, event) => {
+	const file = event.target.files[0];
+	if (file) {
+		const reader = new FileReader();
+		reader.onload = (e) => {
+			productDetails.value[index].image = e.target.result; // Set the image source to Style
+		};
+		reader.readAsDataURL(file); // Convert image to base64
+	}
+};
+
+// Function to save flyer as an image (not changed)
+const saveFlyerAsImage = () => {
+	const flyer = document.getElementById('flyer');
+	html2canvas(flyer).then((canvas) => {
+		const link = document.createElement('a');
+		link.href = canvas.toDataURL('image/png');
+		link.download = 'flyer.png';
+		link.click();
+	});
+};
+
+// Function to save flyer as a PDF (not changed)
+const saveFlyerAsPDF = () => {
+	const flyer = document.getElementById('flyer');
+	html2pdf()
+		.from(flyer)
+		.save('flyer.pdf');
+};
+
+// Function to clear product details (not changed)
+const clearDetails = () => {
+	productDetails.value.forEach((product) => {
+		product.price = 'R';
+		product.image = null;
+	});
+};
+
+</script>
+
+<template>
+
+	<body>
+		<div class="container">
+			<div class="flyer-container" id="flyer">
+				<div class="main-content">
+					<header>
+						<div class="header-content">
+							<div class="column contact-details">
+								<a href="mailto:sales@essentialscpt.co.za" class="contact-item email">
+									<i class="bi bi-envelope"></i> sales@essentialscpt.co.za
+								</a>
+								<a href="tel:+0217030041" class="contact-item phone">
+									<i class="bi bi-telephone"></i> 021 703 0041
+								</a>
+								<a href="https://wa.me/0608854831" class="contact-item whatsapp">
+									<i class="bi bi-whatsapp"></i> 060 885 4831
+								</a>
+								<a href="https://web.facebook.com/strandfonteinrd" class="contact-item facebook"
+									target="_blank">
+									<i class="bi bi-facebook"></i> Essentials
+								</a>
+							</div>
+							<div class="column brand-details">
+								<img src="./assets/images/Essentials-Logo.png" alt="Logo" class="logo">
+								<p class="slogan">We deliver excellence from start to finish.</p>
+								<a href="https://essentialscpt.co.za" class="website-link"
+									target="_blank">www.essentialscpt.co.za</a>
+							</div>
+						</div>
+					</header>
+					<div class="offerings-section"></div>
+					<component :is="currentStyle" :products="productDetails" />
+				</div>
+				<footer>
+					<div class="footer-content">
+						<ul>
+							<li>Bank Details: FNB Account no: 625 6886 2201</li>
+							<li>Branch Code: 250 655</li>
+						</ul>
+
+						<p class="footer-notice">NO REFUNDS - NO RETURNS WILL BE ACCEPTED<br>
+							Please note we NO LONGER accept CASH
+						</p>
+
+						<div class="footer-hours">
+							<p><span>Trading Hours:</span> Mon - Thur 08:00 - 17:00<br>
+								Fri 08:00 - 12:30, reopen 13:45 - 17:00</p>
+						</div>
+
+						<div class="footer-address">
+							<p><span>Address:</span> New Strandfontein Road & Greenway Road Ottery, 7808</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+
+			<div class="input-section" id="input-section">
+				<h2>Edit Flyer</h2>
+
+				<!-- Dropdown for selecting display style -->
+				<label class="display"for="style-select">CHOOSE DISPLAY</label>
+				<select v-model="selectedStyle" id="style-select">
+					<option value="1">Style 1</option>
+					<option value="2">Style 2</option>
+					<option value="3">Style 3</option>
+				</select>
+
+				<!-- Loop through product details for input fields -->
+				<div v-for="(product, index) in productDetails" :key="index">
+					<h3>{{ product.title }}</h3>
+					<input type="text" v-model="product.price" placeholder="Product Price" />
+					<input type="file" @change="handleImageUpload(index, $event)" accept="image/*" />
+				</div>
+
+				<button @click="saveFlyerAsImage">Save as Image</button>
+				<button @click="saveFlyerAsPDF">Save as PDF</button>
+				<button @click="clearDetails">Clear Details</button>
+			</div>
+
+		</div>
+	</body>
+</template>
+
+
+<style>
+/* Add your styles here */
+.product-image {
+	max-width: 100%;
+	/* Set a max-width for images to fit in the flyer */
+	height: auto;
+	/* Maintain aspect ratio */
+}
+
+.display {
+	font-size: larger;
+	font-weight: bolder;
+}
+</style>
