@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Cormorant Garamond", serif;
+}
+
+:root {
+	--orange: #F16224;
+	--green: #055D34;
+	--dark: #040404;
+	--white: white;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+
+.container {
+	display: flex;
+	gap: 20px;
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--dark);
+	margin-bottom: 10px;
+}
+
+.flyer-container {
+	width: 210mm;
+	height: auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	background-color: var(--orange);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	/* Removed padding here to prevent it from affecting the footer */
+}
+
+.offerings-section {
+	background-image: url(assets/images/banner.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	min-height: 12rem;
+}
+
+header,
+footer {
+	background-color: var(--white);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header {
+	margin-top: auto;
+	background-image: url(assets/images/header.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	min-height: 12.5rem;
+}
+
+footer {
+	margin-top: auto;
+	background-image: url(assets/images/new-footers.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	min-height: 26rem;
+}
+
+.products-section {
+	margin-top: 10px;
+	width: 100%;
+	max-height: 100%;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 10px;
+	background-color: var(--blue);
+}
+
+.product {
+	max-width: calc(33.333% - 10px);
+	/* Adjust for 3 products in a row with gaps */
+	width: 100%;
+	height: 180px;
+	/* Container height */
+	display: flex;
+	/* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+	background-color: transparent;
+	/* Fallback for transparent images */
+}
+
+.product img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* Prevent cropping by containing the entire image */
+	object-position: center;
+	/* Center the image within the container */
+	image-rendering: auto;
+	/* Ensure high-quality image rendering */
+	/* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
+}
+
+.product-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	/* Align the price at the bottom */
+	flex: 1;
+	/* padding: 18px; */
+	background-color: rgba(255, 255, 255, 0);
+	/* Transparent background to see the image */
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	/* backdrop-filter: blur(5px); */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+	/* Ensure content is above the background image */
+}
+
+.product-title,
+.product-description {
+	display: none;
+}
+
+.product-price {
+	font-size: 12px;
+	font-weight: bold;
+	color: var(--white);
+	background-color: var(--green);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+	border-radius: 50px;
+	padding: 10px;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	white-space: nowrap;
+	z-index: 2;
+}
+
+/* Button styling */
+.product-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: var(--green);
+	color: var(--white);
+	border: none;
+	border-radius: 5px;
+	padding: 15px;
+	font-size: 10px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.input-section {
+	width: 300px;
+}
+
+.input-section input {
+	display: block;
+	font-size: larger;
+	margin-bottom: 10px;
+	padding: 8px;
+	width: 100%;
+}
+
+.input-section button {
+	font-size: 20px;
+	font-weight: bold;
+	color: var(--white);
+	background-color: var(--green);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+	border-radius: 50px;
+	padding: 10px 15px;
+	margin: 10px;
+	border: none;
+}

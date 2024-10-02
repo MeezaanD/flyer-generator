@@ -36,11 +36,12 @@ const props = defineProps(['products']);
 }
 
 .product {
-	background-color: #b0e0f0;
+	background-color: #e4eef1;
 	width: calc(33.33% - 20px);
 	/* Three products per row with space */
 	margin-bottom: 20px;
 	/* Spacing between rows */
 	box-sizing: border-box;
+	padding: 10px;
 }
 </style>
