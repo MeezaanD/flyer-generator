@@ -5,6 +5,7 @@ Links
 # Version 2
 
 - Essentials : https://flyer-generator-eight.vercel.app/
+- QTZ : https://flyer-generator-t24k.vercel.app/
 
 # Version 1
 
