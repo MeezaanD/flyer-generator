@@ -1,11 +1,10 @@
 <template>
-	<div class="products-section">
-		<div class="container">
-			<div class="product" v-for="(product, index) in products" :key="index">
-				<img :src="product.image" alt="Product Image" />
-				<div class="product-content">
-					<p class="product-price">{{ product.price }}</p>
-				</div>
+	<div class="container">
+		<div class="product" v-for="(product, index) in products" :key="index">
+			<img :src="product.image" alt="Product Image" />
+			<div class="product-content">
+				<p class="product-price">{{ product.price }}</p>
+				<p class="product-description">{{ product.description }}</p>
 			</div>
 		</div>
 	</div>
@@ -36,12 +35,12 @@ const props = defineProps(['products']);
 }
 
 .product {
-	background-color: #e4eef1;
+	background-color: #b0e0f0;
 	width: calc(33.33% - 20px);
 	/* Three products per row with space */
-	margin-bottom: 20px;
+	/* margin-bottom: 10px; */
+	padding: 10px;
 	/* Spacing between rows */
 	box-sizing: border-box;
-	padding: 10px;
 }
 </style>

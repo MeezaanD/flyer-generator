@@ -74,12 +74,12 @@ header {
 
 footer {
 	margin-top: auto;
-	background-image: url(assets/images/new-footers.png);
+	background-image: url(assets/images/new-footer.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
-	min-height: 26rem;
+	min-height: 30rem;
 }
 
 .products-section {
@@ -98,10 +98,11 @@ footer {
 	max-width: calc(33.333% - 10px);
 	/* Adjust for 3 products in a row with gaps */
 	width: 100%;
-	height: 180px;
-	/* Container height */
+	height: 250px;
+	/* Adjust container height if needed */
 	display: flex;
-	/* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
+	flex-direction: column;
+	/* Keep column layout */
 	border-radius: 10px;
 	overflow: hidden;
 	position: relative;
@@ -111,39 +112,32 @@ footer {
 
 .product img {
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	/* Prevent cropping by containing the entire image */
+	height: 140px;
+	/* border: 1px solid black; */
+	/* Set a fixed height for the image */
+	object-fit: contain;
+	/* Ensure the image covers the area */
 	object-position: center;
 	/* Center the image within the container */
 	image-rendering: auto;
 	/* Ensure high-quality image rendering */
-	/* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
 }
 
 .product-content {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
-	/* Align the price at the bottom */
-	flex: 1;
-	/* padding: 18px; */
-	background-color: rgba(255, 255, 255, 0);
-	/* Transparent background to see the image */
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-	/* backdrop-filter: blur(5px); */
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	/* Keep content in column layout */
+	justify-content: flex-start;
+	/* Align content at the top */
 	width: 100%;
+	/* Take full width */
+	padding: 10px;
+	/* Add some padding */
+	position: relative;
+	/* Change to relative positioning */
 	z-index: 1;
-	/* Ensure content is above the background image */
-}
-
-.product-title,
-.product-description {
-	display: none;
+	/* Ensure content is above the image */
+	/* border: 1px solid black; */
 }
 
 .product-price {
@@ -154,11 +148,26 @@ footer {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 	border-radius: 50px;
 	padding: 10px;
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
-	white-space: nowrap;
-	z-index: 2;
+	display: inline-block;
+	/* Change to inline-block */
+	margin-left: auto;
+	/* Align price to the right */
+	margin-top: auto;
+	/* Push price to the bottom of the content */
+}
+
+.product-description {
+	/* border: 1px solid black; */
+	margin-top: 10px;
+	/* Add margin to separate from price */
+	font-size: 16px;
+	/* Adjust font size as needed */
+	line-height: 1.2;
+	/* Improve readability with line height */
+	overflow-wrap: break-word;
+	/* Ensure text wraps properly */
+	max-width: 100%;
+	/* Prevent exceeding container width */
 }
 
 /* Button styling */

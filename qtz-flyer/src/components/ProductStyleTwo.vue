@@ -1,14 +1,13 @@
 <template>
-	<div class="products-section">
 		<div class="container">
 			<div class="product" v-for="(product, index) in limitedProducts" :key="index">
 				<img :src="product.image" alt="Product Image" />
 				<div class="product-content">
 					<p class="product-price">{{ product.price }}</p>
+					<p class="product-description">{{ product.description }}</p>
 				</div>
 			</div>
 		</div>
-	</div>
 </template>
 
 <script setup>
@@ -28,11 +27,6 @@ const limitedProducts = computed(() => {
 	justify-content: center;
 }
 
-.product {
-	background-color: #e4eef1;
-	padding: 10px;
-}
-
 .container {
 	display: flex;
 	flex-wrap: wrap;
@@ -43,5 +37,21 @@ const limitedProducts = computed(() => {
 	/* Limit container width */
 	margin: 0 auto;
 	/* Center the container */
+}
+
+.product {
+	background-color: #b0e0f0;
+	/* Light blue for contrast */
+	/* margin-bottom: 20px; */
+	/* Spacing between rows */
+	box-sizing: border-box;
+	/* Include padding and borders in width calculation */
+	padding: 10px;
+	/* Add padding inside product */
+}
+
+.product-content {
+	text-align: center;
+	/* Center the content */
 }
 </style>
