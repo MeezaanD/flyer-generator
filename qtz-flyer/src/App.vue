@@ -15,6 +15,11 @@ const productDetails = ref([
 ]);
 
 const selectedStyle = ref('1');
+const flyerHeading = ref('Welcome to Our Product Section'); // New heading text
+
+// Define reactive properties for deal date
+const dealValidFrom = ref(""); // Store the "valid from" date
+const dealValidTo = ref("");   // Store the "valid to" date
 
 const currentStyle = computed(() => {
 	switch (selectedStyle.value) {
@@ -52,19 +57,12 @@ const saveFlyerAsImage = () => {
 	});
 };
 
-// Function to save flyer as a PDF
-const saveFlyerAsPDF = () => {
-	const flyer = document.getElementById('flyer');
-	html2pdf()
-		.from(flyer)
-		.save('flyer.pdf');
-};
-
 // Function to clear product details
 const clearDetails = () => {
 	productDetails.value.forEach((product) => {
 		product.price = 'R0';
 		product.image = null;
+		product.description = ''; // Clear description as well
 	});
 };
 
@@ -76,9 +74,17 @@ const getPrice = (price) => {
 // Update the price while preserving the 'R' prefix
 const updatePrice = (index, event) => {
 	const value = event.target.value;
-	// Update the price with the 'R' prefix
-	productDetails.value[index].price = `R${value.replace(/[^0-9]/g, '')}`; // Allow only numbers
+	// Allow only numbers and a single decimal point
+	const formattedValue = value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); 
+	productDetails.value[index].price = `R${formattedValue}`;
 };
+
+// Update description with character limit
+const updateDescription = (index, event) => {
+	const newValue = event.target.value.slice(0, 120); // Limit to 110 characters
+	productDetails.value[index].description = newValue;
+};
+
 </script>
 
 <template>
@@ -87,11 +93,16 @@ const updatePrice = (index, event) => {
 		<div class="container">
 			<div class="flyer-container" id="flyer">
 				<div class="main-content">
-				<header>
-				</header>
-				<div class="offerings-section">
-				</div>
-					<component :is="currentStyle" :products="productDetails" />
+					<header>
+					</header>
+					<div class="offerings-section"></div>
+					<div class="products-section">
+						<h2 class="flyer-heading">{{ flyerHeading }}</h2>
+						<!-- Display deal date dynamically -->
+						<component :is="currentStyle" :products="productDetails" />
+						<h4 class="flyer-date">Deal valid from {{ dealValidFrom || 'X' }} to {{ dealValidTo || 'Y' }}
+						</h4>
+					</div>
 				</div>
 				<footer>
 				</footer>
@@ -99,6 +110,17 @@ const updatePrice = (index, event) => {
 
 			<div class="input-section" id="input-section">
 				<h2>Edit Flyer</h2>
+
+				<!-- Input for heading text -->
+				<label for="heading-text">Flyer Heading:</label>
+				<input type="text" id="heading-text" v-model="flyerHeading" placeholder="Enter flyer heading" />
+
+				<!-- Input for deal date -->
+				<label for="deal-valid-from">Deal Valid From:</label>
+				<input type="text" id="deal-valid-from" v-model="dealValidFrom" placeholder="Start Date">
+
+				<label for="deal-valid-to">Deal Valid To:</label>
+				<input type="text" id="deal-valid-to" v-model="dealValidTo" placeholder="End Date">
 
 				<!-- Dropdown for selecting display style -->
 				<label class="display" for="style-select">CHOOSE DISPLAY</label>
@@ -113,11 +135,12 @@ const updatePrice = (index, event) => {
 					<h3>{{ product.title }}</h3>
 					<input type="text" :value="getPrice(product.price)" @input="updatePrice(index, $event)"
 						placeholder="Product Price" />
+					<input type="text" v-model="product.description" @input="updateDescription(index, $event)"
+						placeholder="Product Description" maxlength="110" />
 					<input type="file" @change="handleImageUpload(index, $event)" accept="image/*" />
 				</div>
 
 				<button @click="saveFlyerAsImage">Save as Image</button>
-				<!-- <button @click="saveFlyerAsPDF">Save as PDF</button> -->
 				<button @click="clearDetails">Clear Details</button>
 			</div>
 		</div>

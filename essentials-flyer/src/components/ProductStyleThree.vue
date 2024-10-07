@@ -1,38 +1,38 @@
 <template>
-  <div class="container">
-    <!-- First Row: 2 Products -->
-    <div class="product-row">
-      <div class="product" v-for="(product, index) in products.slice(0, 2)" :key="index">
-        <img :src="product.image" alt="Product Image" />
-        <div class="product-content">
-          <p class="product-price">{{ product.price }}</p>
-          <p class="product-description">{{ product.description }}</p>
-        </div>
-      </div>
-    </div>
+	<div class="container">
+		<!-- First Row: 2 Products -->
+		<div class="product-row">
+			<div class="product" v-for="(product, index) in products.slice(0, 2)" :key="index">
+				<img :src="product.image" alt="Product Image" />
+				<div class="product-content">
+					<p class="product-price">{{ product.price }}</p>
+					<p class="product-description">{{ product.description }}</p>
+				</div>
+			</div>
+		</div>
 
-    <!-- Second Row: 1 Centered Product -->
-    <div class="product-row centered-row" v-if="products.length > 2">
-      <div class="product single-product">
-        <img :src="products[2]?.image" alt="Product Image" />
-        <div class="product-content">
-          <p class="product-price">{{ products[2]?.price }}</p>
-          <p class="product-description">{{ products[2]?.description }}</p>
-        </div>
-      </div>
-    </div>
+		<!-- Second Row: 1 Centered Product -->
+		<div class="product-row centered-row" v-if="products.length > 2">
+			<div class="product single-product">
+				<img :src="products[2]?.image" alt="Product Image" />
+				<div class="product-content">
+					<p class="product-price">{{ products[2]?.price }}</p>
+					<p class="product-description">{{ products[2]?.description }}</p>
+				</div>
+			</div>
+		</div>
 
-    <!-- Third Row: 2 Products -->
-    <div class="product-row">
-      <div class="product" v-for="(product, index) in products.slice(3, 5)" :key="index">
-        <img :src="product.image" alt="Product Image" />
-        <div class="product-content">
-          <p class="product-price">{{ product.price }}</p>
-          <p class="product-description">{{ product.description }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+		<!-- Third Row: 2 Products -->
+		<div class="product-row">
+			<div class="product" v-for="(product, index) in products.slice(3, 5)" :key="index">
+				<img :src="product.image" alt="Product Image" />
+				<div class="product-content">
+					<p class="product-price">{{ product.price }}</p>
+					<p class="product-description">{{ product.description }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 
@@ -90,5 +90,4 @@ const props = defineProps(['products']);
 	width: calc(50%);
 	/* Single centered product */
 }
-
 </style>
