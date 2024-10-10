@@ -14,4 +14,4 @@ Links
 
 # Product Specificins
 
-- QTZ Product Specs: 
+- QTZ Product Specs: https://qtz-product-specs.vercel.app/
