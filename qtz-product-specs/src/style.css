@@ -59,6 +59,18 @@ h2 {
 	min-height: 14rem;
 }
 
+.products-section {
+	margin-top: 10px;
+	width: 100%;
+	max-height: 100%;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 10px;
+	background-color: var(--blue);
+}
+
 header,
 footer {
 	background-color: var(--white);
