@@ -88,7 +88,6 @@ const updateDescription = (index, event) => {
 </script>
 
 <template>
-
 	<body>
 		<div class="container">
 			<div class="flyer-container" id="flyer">
@@ -98,9 +97,14 @@ const updateDescription = (index, event) => {
 					<div class="offerings-section"></div>
 					<div class="products-section">
 						<h2 class="flyer-heading">{{ flyerHeading }}</h2>
-						<!-- Display deal date dynamically -->
+
+						
 						<component :is="currentStyle" :products="productDetails" />
-						<h4 class="flyer-date">Deal valid from {{ dealValidFrom || 'X' }} Till {{ dealValidTo || 'Y' }}
+						<!-- Conditionally display deal date if either "from" or "to" is filled -->
+						<h4 v-if="dealValidFrom || dealValidTo" class="flyer-date">
+							Deal valid 
+							<span v-if="dealValidFrom">from {{ dealValidFrom }}</span>
+							<span v-if="dealValidTo"> till {{ dealValidTo }}</span>
 						</h4>
 					</div>
 				</div>
@@ -116,10 +120,10 @@ const updateDescription = (index, event) => {
 				<input type="text" id="heading-text" v-model="flyerHeading" placeholder="Enter flyer heading" />
 
 				<!-- Input for deal date -->
-				<label for="deal-valid-from">Deal Valid From:</label>
+				<label for="deal-valid-from">Deal Valid From: (Optional)</label>
 				<input type="text" id="deal-valid-from" v-model="dealValidFrom" placeholder="Start Date">
 
-				<label for="deal-valid-to">Deal Valid Till:</label>
+				<label for="deal-valid-to">Deal Valid Till: (Optional)</label>
 				<input type="text" id="deal-valid-to" v-model="dealValidTo" placeholder="End Date">
 
 				<!-- Dropdown for selecting display style -->
