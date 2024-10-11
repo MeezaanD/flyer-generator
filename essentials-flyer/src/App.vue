@@ -75,7 +75,7 @@ const getPrice = (price) => {
 const updatePrice = (index, event) => {
 	const value = event.target.value;
 	// Allow only numbers and a single decimal point
-	const formattedValue = value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); 
+	const formattedValue = value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 	productDetails.value[index].price = `R${formattedValue}`;
 };
 
@@ -88,6 +88,7 @@ const updateDescription = (index, event) => {
 </script>
 
 <template>
+
 	<body>
 		<div class="container">
 			<div class="flyer-container" id="flyer">
@@ -122,7 +123,8 @@ const updateDescription = (index, event) => {
 						<h2 class="flyer-heading">{{ flyerHeading }}</h2>
 						<!-- Display deal date dynamically -->
 						<component :is="currentStyle" :products="productDetails" />
-						<h4 class="flyer-date">Deal valid from {{ dealValidFrom || 'X' }} to {{ dealValidTo || 'Y' }}</h4>
+						<h4 class="flyer-date">Deal valid from {{ dealValidFrom || 'X' }} Till {{ dealValidTo || 'Y' }}
+						</h4>
 					</div>
 				</div>
 
@@ -159,7 +161,7 @@ const updateDescription = (index, event) => {
 				<label for="deal-valid-from">Deal Valid From:</label>
 				<input type="text" id="deal-valid-from" v-model="dealValidFrom" placeholder="Start Date">
 
-				<label for="deal-valid-to">Deal Valid To:</label>
+				<label for="deal-valid-to">Deal Valid Till:</label>
 				<input type="text" id="deal-valid-to" v-model="dealValidTo" placeholder="End Date">
 
 				<!-- Dropdown for selecting display style -->
@@ -208,7 +210,8 @@ const updateDescription = (index, event) => {
 	text-align: end !important;
 }
 
-.input-section input[type="text"], .input-section input[type="date"] {
+.input-section input[type="text"],
+.input-section input[type="date"] {
 	margin-bottom: 10px;
 	/* Add spacing between inputs */
 	width: 100%;
