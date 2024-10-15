@@ -141,7 +141,7 @@ footer {
 }
 
 .product-price {
-	font-size: 12px;
+	font-size: 20px;
 	font-weight: bold;
 	color: var(--white);
 	background-color: var(--green);
