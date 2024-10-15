@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="product" v-for="(product, index) in products" :key="index">
+		<div class="product" v-for="(product, index) in products" :key="index" :style="{ backgroundColor: backgroundColor }">
 			<img :src="product.image" alt="Product Image" />
 			<div class="product-content">
 				<p class="product-price">{{ product.price }}</p>
@@ -13,7 +13,10 @@
 <script setup>
 import { defineProps } from 'vue';
 
-const props = defineProps(['products']);
+const props = defineProps({
+	products: Array,
+	backgroundColor: String // New prop for background color
+});
 </script>
 
 <style scoped>
@@ -25,22 +28,18 @@ const props = defineProps(['products']);
 .container {
 	display: flex;
 	flex-wrap: wrap;
-	/* Allow wrapping */
 	justify-content: space-between;
-	/* Space out items */
 	max-width: 1200px;
-	/* Limit container width */
 	margin: 0 auto;
-	/* Center the container */
 }
 
 .product {
-	background-color: #b0e0f0;
 	width: calc(33.33% - 20px);
-	/* Three products per row with space */
-	/* margin-bottom: 10px; */
 	padding: 10px;
-	/* Spacing between rows */
 	box-sizing: border-box;
+}
+
+.product-content {
+	text-align: center;
 }
 </style>
