@@ -1,6 +1,6 @@
 <template>
 		<div class="container">
-			<div class="product" v-for="(product, index) in limitedProducts" :key="index">
+			<div class="product" v-for="(product, index) in limitedProducts" :key="index" :style="{ backgroundColor: backgroundColor }">
 				<img :src="product.image" alt="Product Image" />
 				<div class="product-content">
 					<p class="product-price">{{ product.price }}</p>
@@ -11,9 +11,12 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
+import { defineProps, ref, computed } from 'vue';
 
-const props = defineProps(['products']);
+const props = defineProps({
+	products: Array,
+	backgroundColor: String // New prop for background color
+});
 
 // Computed property to limit products to 4
 const limitedProducts = computed(() => {

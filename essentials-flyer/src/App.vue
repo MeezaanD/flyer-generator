@@ -21,6 +21,8 @@ const flyerHeading = ref('Welcome to Our Product Section'); // New heading text
 const dealValidFrom = ref(""); // Store the "valid from" date
 const dealValidTo = ref("");   // Store the "valid to" date
 
+const selectedBackgroundColor = ref('#b0e0f0'); // Default light blue color
+
 const currentStyle = computed(() => {
 	switch (selectedStyle.value) {
 		case '1':
@@ -122,7 +124,7 @@ const updateDescription = (index, event) => {
 					<div class="products-section">
 						<h2 class="flyer-heading">{{ flyerHeading }}</h2>
 						<!-- Display deal date dynamically -->
-						<component :is="currentStyle" :products="productDetails" />
+						<component :is="currentStyle" :products="productDetails" :backgroundColor="selectedBackgroundColor" />
 						<h4 class="flyer-date">Deal valid from {{ dealValidFrom || 'X' }} Till {{ dealValidTo || 'Y' }}
 						</h4>
 					</div>
@@ -171,6 +173,9 @@ const updateDescription = (index, event) => {
 					<option value="2">DISPLAY 4</option>
 					<option value="3">DISPLAY 5</option>
 				</select>
+
+				<label for="background-picker">CHOOSE BACKGROUND COLOR:</label>
+				<input type="color" id="background-picker" v-model="selectedBackgroundColor" />
 
 				<!-- Loop through product details for input fields -->
 				<div v-for="(product, index) in productDetails" :key="index">

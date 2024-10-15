@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="product" v-for="(product, index) in products" :key="index">
+		<div class="product" v-for="(product, index) in products" :key="index" :style="{ backgroundColor: backgroundColor }">
 			<img :src="product.image" alt="Product Image" />
 			<div class="product-content">
 				<p class="product-price">{{ product.price }}</p>
@@ -11,9 +11,13 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 
-const props = defineProps(['products']);
+const props = defineProps({
+	products: Array,
+	backgroundColor: String // New prop for background color
+});
+
 </script>
 
 <style scoped>
