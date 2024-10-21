@@ -80,6 +80,7 @@ const props = defineProps({
 
 .product {
 	width: calc(50% - 20px);
+	height: auto;
 	/* Two products per row */
 	box-sizing: border-box;
 	padding: 10px;
@@ -92,11 +93,5 @@ const props = defineProps({
 
 .product-content {
 	text-align: center;
-}
-
-img {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
 }
 </style>
