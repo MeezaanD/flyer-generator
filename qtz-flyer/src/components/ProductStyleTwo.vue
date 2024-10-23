@@ -1,8 +1,7 @@
 <template>
 	<div class="container">
-		
-		<!-- Product items -->
-		<div class="product" v-for="(product, index) in products" :key="index" :style="{ backgroundColor: backgroundColor }">
+		<!-- Product items limited to 4 -->
+		<div class="product" v-for="(product, index) in limitedProducts" :key="index" :style="{ backgroundColor: backgroundColor }">
 			<img :src="product.image" alt="Product Image" />
 			<div class="product-content">
 				<p class="product-price">{{ product.price }}</p>
