@@ -105,11 +105,11 @@ const updateDescription = (index, event) => {
 						<component :is="currentStyle" :products="productDetails" :backgroundColor="selectedBackgroundColor" />
 						
 						<!-- Conditionally display deal date if either "from" or "to" is filled -->
-						<h4 v-if="dealValidFrom || dealValidTo" class="flyer-date">
+						<!-- <h4 v-if="dealValidFrom || dealValidTo" class="flyer-date">
 							Deal valid 
 							<span v-if="dealValidFrom">from {{ dealValidFrom }}</span>
 							<span v-if="dealValidTo"> till {{ dealValidTo }}</span>
-						</h4>
+						</h4> -->
 					</div>
 				</div>
 				<footer>
